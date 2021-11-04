@@ -1,6 +1,6 @@
 
 
-## I create tailwand like  CSS framework that provided utilites classes.
+## I create tailwand like CSS framework that provided utilites classes.
 
 Although it is not complete,
 I added margin, padding, width, height, min-width, max-width, font-size, font-weight, position, top, bottom, left, right, text color, bg color hover color
@@ -95,7 +95,7 @@ classes
   yarn preview
 ```
 
-![preview](create_tailwand like framework.png)
+![preview](./create_tailwand like framework.png)
 
 
 ## Happy Codding
