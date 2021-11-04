@@ -95,7 +95,7 @@ classes
   yarn preview
 ```
 
-![preview](./create_tailwand like framework.png)
+![preview](https://raw.githubusercontent.com/rasel-code-dev/css-utitiles-framework__like-tailwand-css/master/create_tailwand%20like%20framework.png)
 
 
 ## Happy Codding
