@@ -1,0 +1,60 @@
+@use "sass:string";
+@use "sass:color";
+//@use "sass:list";
+//@use "sass:map";
+
+@import "./variables/colors";
+
+.rounded-none{ border-radius: 0 }
+.rounded-sm{ border-radius: 0.125rem;}
+.rounded{ border-radius: 0.25rem;}
+.rounded-md{ border-radius: 0.375rem;}
+.rounded-lg{ border-radius: 0.5rem;}
+.rounded-xl{ border-radius: 0.75rem;}
+.rounded-2xl{ border-radius: 1rem;}
+.rounded-3xl{ border-radius: 1.5rem;}
+// border radius..........
+.rounded-full{border-radius: 9999px}
+@for $i from 1 through 30 {
+  .rounded-#{$i}{
+    border-radius: #{$i}px;
+  }
+}
+
+
+
+$width: 1, 2, 3, 4, 5, 6, 7, 8;
+
+@each $item in $width{
+  .border-#{$item}{ border-width: #{$item}px};
+  .border-b-#{$item}{ border-bottom-width: #{$item}px};
+  .border-t-#{$item}{ border-top-width: #{$item}px};
+  .border-l-#{$item}{ border-left-width: #{$item}px};
+  .border-r-#{$item}{ border-right-width: #{$item}px};
+  .divide-y{ border-top-width: #{$item}px; border-bottom-width: #{$item}px; };
+}
+
+@each $name, $value in $colors_obj{
+  // use this variable
+  .border-#{$name}{ border-color: rgba($value, var(--my-border-opacity)); }
+  .hover\:border-#{$name}:hover{
+    &:hover{
+      border-color: rgba($value, var(--my-border-opacity));
+    }
+  }
+  
+}
+
+
+
+$opacity: 0, 25, 50, 75, 100;
+@each $item in $opacity{
+  .border-opacity-#{$item}{
+    // this is class level css variable....
+    --my-border-opacity: #{$item / 100}
+  }
+}
+
+
+
+

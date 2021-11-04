@@ -1,0 +1,136 @@
+@use "sass:string";
+//@use "sass:list";
+//@use "sass:map";
+
+@import "_unit_values.scss";
+@import "functions";
+
+
+// margin all classes
+@each $name, $value in $unit_values {
+  $list: str-split($name, '.');
+  
+  $negative_value:  - $value;
+  
+  @if length($list) > 1 {
+    $v1  : nth($list, 1);
+    $v2  : nth($list, 2);
+    
+    @include makeClassForFloting( (margin), "m", $v1, $v2, $value);
+    @include makeClassForFloting( (margin), "-m", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (margin-top), "mt", $v1, $v2, $value);
+    @include makeClassForFloting( (margin), "-mt", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (margin-bottom), "mb", $v1, $v2, $value);
+    @include makeClassForFloting( (margin-bottom), "-mb", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (margin-left), "ml", $v1, $v2, $value);
+    @include makeClassForFloting( (margin-left), "-ml", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (margin-right), "mr", $v1, $v2, $value);
+    @include makeClassForFloting( (margin-right), "-mr", $v1, $v2, $negative_value);
+    
+    @include makeClassForFloting((margin-left, margin-right), "mx", $v1, $v2, $value);
+    @include makeClassForFloting((margin-top, margin-bottom), "-my", $v1, $v2, $negative_value);
+    
+  } @else {
+    @if $name == "px" {
+      @include makeClass( (margin), "m", "px", "1px");
+      @include makeClass( (margin), "-m", "px", "-1px");
+      @include makeClass( (margin-top), "mt",  "px", "1px");
+      @include makeClass( (margin), "-mt",  "px", "-1px");
+      @include makeClass( (margin-bottom), "mb",  "px", "1px");
+      @include makeClass( (margin-bottom), "-mb",  "px", "-1px");
+      @include makeClass( (margin-left), "ml",  "px", "1px");
+      @include makeClass( (margin-left), "-ml",  "px", "-1px");
+      @include makeClass( (margin-right), "mr",  "px", "1px");
+      @include makeClass( (margin-right), "-mr",  "px", "-1px");
+      @include makeClass((margin-left, margin-right), "mx", "px", "1px");
+      @include makeClass((margin-top, margin-bottom), "-my", "-px", "-1px");
+    } @else {
+
+      @include makeClass( (margin), "m", $name, $value);
+      @include makeClass( (margin), "-m", $name, $negative_value);
+      @include makeClass( (margin-top), "mt",  $name, $value);
+      @include makeClass( (margin), "-mt",  $name, $negative_value);
+      @include makeClass( (margin-bottom), "mb",  $name, $value);
+      @include makeClass( (margin-bottom), "-mb",  $name, $negative_value);
+      @include makeClass( (margin-left), "ml",  $name, $value);
+      @include makeClass( (margin-left), "-ml",  $name, $negative_value);
+      @include makeClass( (margin-right), "mr",  $name, $value);
+      @include makeClass( (margin-right), "-mr",  $name, $negative_value);
+      
+      @include makeClass((margin-left, margin-right), "mx", $name, $value);
+      @include makeClass((margin-left, margin-right), "-mx", $name, $negative_value);
+      
+      @include makeClass((margin-top, margin-bottom), "my", $name, $value);
+      @include makeClass((margin-top, margin-bottom), "-my", $name, $negative_value);
+    }
+  }
+}
+.mx-auto{margin-left: auto; margin-right: auto };
+
+
+// padding all classes
+@each $name, $value in $unit_values {
+  $list: str-split($name, '.');
+  
+  $negative_value:  - $value;
+  
+  @if length($list) > 1 {
+    $v1  : nth($list, 1);
+    $v2  : nth($list, 2);
+
+    @include makeClassForFloting( (padding), "p",$v1, $v2, $value);
+    @include makeClassForFloting( (padding), "-p",$v1, $v2, $negative_value);
+    @include makeClassForFloting( (padding-top), "pt", $v1, $v2, $value);
+    @include makeClassForFloting( (padding), "-pt", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (padding-bottom), "pb", $v1, $v2, $value);
+    @include makeClassForFloting( (padding-bottom), "-pb", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (padding-left), "pl", $v1, $v2, $value);
+    @include makeClassForFloting( (padding-left), "-pl", $v1, $v2, $negative_value);
+    @include makeClassForFloting( (padding-right), "pr", $v1, $v2, $value);
+    @include makeClassForFloting( (padding-right), "-pr", $v1, $v2, $negative_value);
+
+    
+    @include makeClassForFloting((padding-left, padding-right), "px", $v1, $v2, $value);
+    @include makeClassForFloting((padding-left, padding-right), "-px", $v1, $v2, $negative_value);
+    @include makeClassForFloting((padding-top, padding-bottom), "py", $v1, $v2, $value);
+    @include makeClassForFloting((padding-top, padding-bottom), "-py", $v1, $v2, $negative_value);
+  
+    
+  
+  } @else {
+    @if $name == "px" {
+      @include makeClass( (padding), "p", "px", "1px");
+      @include makeClass( (padding), "-p", "px", "-1px");
+      @include makeClass( (padding-top), "pt",  "px", "1px");
+      @include makeClass( (padding), "-pt",  "px", "-1px");
+      @include makeClass( (padding-bottom), "pb",  "px", "1px");
+      @include makeClass( (padding-bottom), "-pb",  "px", "-1px");
+      @include makeClass( (padding-left), "pl",  "px", "1px");
+      @include makeClass( (padding-left), "-pl",  "px", "-1px");
+      @include makeClass( (padding-right), "pr",  "px", "1px");
+      @include makeClass( (padding-right), "-pr",  "px", "-1px");
+      @include makeClass((padding-left, padding-right), "px", $name, $value);
+      @include makeClass((padding-left, padding-right), "px", $name, "-1px");
+      @include makeClass((padding-top, padding-bottom), "py", $name, $value);
+      @include makeClass((padding-top, padding-bottom), "-py", $name, "-1px");
+    } @else {
+      @include makeClass( (padding), "p", $name, $value);
+      @include makeClass( (padding), "-p", $name, $negative_value);
+      @include makeClass( (padding-top), "pt",  $name, $value);
+      @include makeClass( (padding), "-pt",  $name, $negative_value);
+      @include makeClass( (padding-bottom), "pb",  $name, $value);
+      @include makeClass( (padding-bottom), "-pb",  $name, $negative_value);
+      @include makeClass( (padding-left), "pl",  $name, $value);
+      @include makeClass( (padding-left), "-pl",  $name, $negative_value);
+      @include makeClass( (padding-right), "pr",  $name, $value);
+      @include makeClass( (padding-right), "-pr",  $name, $negative_value);
+      
+      @include makeClass((padding-left, padding-right), "px", $name, $value);
+      @include makeClass((padding-left, padding-right), "-px", $name, $negative_value);
+      
+      @include makeClass((padding-bottom, padding-top), "py", $name, $value);
+      @include makeClass((padding-bottom, padding-top), "-py", $name, $negative_value);
+      
+    }
+  }
+}

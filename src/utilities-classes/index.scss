@@ -1,0 +1,15 @@
+
+@import "_margin_padding.scss";
+@import "width_height";
+@import "colors_classname";
+@import "_layout.scss";
+@import "position.scss";
+@import "_fonts.scss";
+@import "_border_classname.scss";
+
+.cursor-pointer{
+  cursor: pointer;
+}
+.events-none{
+  pointer-events: none;
+}

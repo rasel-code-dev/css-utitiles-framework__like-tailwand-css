@@ -1,0 +1,48 @@
+
+@import "unit_values";
+@import "functions";
+
+
+.w-100{width: 100px}
+.w-full{width: 100%}
+.w-auto{width: auto};
+
+@each $name, $value in $unit_values {
+  $list: str-split($name, '.');
+  
+  $negative_value: - $value;
+  
+  @if length($list) > 1 {
+    $v1: nth($list, 1);
+    $v2: nth($list, 2);
+    @include makeClassForFloting((width), "w", $v1, $v2, $value);
+  } @else {
+    @if $name == "px" {
+      @include makeClass((width), "w", "px", "1px");
+    } @else {
+      @include makeClass((width), "w", $name, $value);
+    }
+  }
+}
+
+
+.h-100{height: 100px}
+.h-full{height: 100%}
+.h-auto{height: auto};
+.min-h-screen{min-height: 100vh}
+@each $name, $value in $unit_values {
+  $list: str-split($name, '.');
+  @if length($list) > 1 {
+    $v1: nth($list, 1);
+    $v2: nth($list, 2);
+    @include makeClassForFloting((height), "h", $v1, $v2, $value);
+  } @else {
+    @if $name == "px" {
+      @include makeClass((height), "h", "px", "1px");
+    } @else {
+      @include makeClass((height), "h", $name, $value);
+    }
+  }
+}
+
+

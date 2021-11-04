@@ -1,0 +1,45 @@
+
+.navigation{
+  //box-shadow: 0 0px 8px 0px #707070,  0px 1px 8px 0px #818181, 0 0px 2px 1px #81818142;
+  
+  //display: flex;
+  //align-items: center;
+  
+  //padding: 20px 0px;
+  .main-nav{
+    display: flex;
+    justify-content: space-between;
+    .nav-item{
+      padding: 10px;
+      a{
+        color: white;
+      }
+    }
+  }
+}
+.input{
+  input{
+    &::placeholder{
+      color: white;
+    }
+  }
+}
+
+
+.nav_items{
+  li{
+    padding: 0 15px;
+  }
+  .avatar_logo{
+    padding: 0 !important;
+  }
+  i{
+    //top: 10px;
+    font-size: 18px;
+    color: white;
+  }
+}
+
+.auth_nav{
+
+}

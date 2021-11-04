@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+node-sql
+sql-social-app.rar
+src/asserts/fontawesome-free
+src/asserts/fontawesome-pro-5.12.0-web
+
+
