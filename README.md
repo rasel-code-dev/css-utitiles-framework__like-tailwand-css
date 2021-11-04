@@ -2,7 +2,7 @@
 
 ## I create tailwand like CSS framework that provided utilites classes.
 
-Although it is not complete,
+Although it is not complete project,
 I added margin, padding, width, height, min-width, max-width, font-size, font-weight, position, top, bottom, left, right, text color, bg color hover color
 classes
 
