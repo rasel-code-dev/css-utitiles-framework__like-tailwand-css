@@ -1,0 +1,5 @@
+{
+  "watch": [ ".", "tailwind.config.js"],
+  "ext": "js css",
+  "ignore": ["framework/dist/", "src/"]
+}

@@ -1,22 +1,152 @@
-import {useEffect} from "preact/compat";
-import api from "./apis";
+import React, {useEffect, Suspense, lazy} from "react";
 
-import Navigation from "./compoenents/navigation/Navigation";
+// import "./asserts/fontawesome-pro-5.14.0-web/css/all.css"
 
 import "./App.scss"
+import Button  from "./components/button/Button";
 
-import routes from "./routes"
-import {Route, Switch} from "react-router-dom";
-
-function App(props) {
-  
+const App = ()=>{
   return (
-    <div className="bg-gray-2 min-h-screen">
-      <Navigation />
-        <Switch>
-          {routes.map((route, i)=> <Route key={i} {...route} /> )}
-        </Switch>
+    <div className="w-max-7xl">
+      <div style={{position: "relative"}} className="font-sm -top-3.5">Hi</div>
+      
+      <div className="radius border-primary  bg-red-600 bg-opacity-50 border-2">HHHHHHHHHH</div>
+      <h1 className="text-red-600">Hi This is H1 Tag</h1>
+      <div className="border-red-300 border border-opacity-25">HHHHHHHHHH</div>
+      <div className="radius" style={{background: "red"}}>HHHHHHHHHH</div>
   
+      <div className="grid grid-temp-cols-2  gap-x-2 gap-y-2">
+        <div className="bg-primary">A</div>
+        <div className="bg-secondary">B</div>
+        <div className="bg-primary">A</div>
+        <div className="bg-secondary">B</div>
+      </div>
+       <div className="grid grid-temp-rows-2 grid-flow-col gap-2">
+        <div className="bg-primary">A</div>
+        <div className="bg-secondary">B</div>
+        <div className="bg-primary">A</div>
+        <div className="bg-secondary">B</div>
+         <div className="bg-primary">A</div>
+         <div className="bg-secondary">B</div>
+         <div className="bg-primary">A</div>
+         <div className="bg-secondary">B</div>
+      </div>
+      
+      <div className="container" style={{background: "green"}}>SM Container</div>
+      <div className="md:container" style={{background: "red"}}>MD Container</div>
+      <div className="lg:container" style={{background: "yellow"}}>LG Container</div>
+      <div className="xl:container" style={{background: "pink"}}>XL Container</div>
+      <div className="md:container" style={{background: "red"}}>MD Container</div>
+      <div className="lg:container" style={{background: "gold"}}>LG Container</div>
+      <header className="grid gap-2 sm:grid-temp-cols-2 grid-temp-cols-1 ">
+        <div className="sm:col-span-2 bg-primary">A</div>
+        <div className="bg-primary ">B</div>
+        <div className=" bg-primary">C</div>
+        <div className="bg-primary">D</div>
+      </header>
+  
+      <form className="mx-2 sm:p-0 max-w-screen-sm my-10 mx-auto border-primary text-secondary  border bg-primary border-opacity-20 radius">
+          <div className="p-1.5">
+            <h1 className="text-center mb-10 m-0">Create a Account</h1>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter Person Name..."
+                className="
+                w-full
+               placeholder-secondary
+               placeholder-opacity-70
+               bg-transparent
+               border-primary
+               border-opacity-50
+               outline-none
+               place
+               radius
+               text-primary
+               border px-2 py-1"
+              />
+            </div>
+            <div className="form-group mt-1">
+              <input
+              type="text"
+              placeholder="Enter Person Name..."
+              className="
+                w-full
+               placeholder-primary
+               placeholder-opacity-20
+               bg-transparent
+               border-primary
+               border-opacity-50
+               outline-none
+               place
+               radius
+               text-primary
+               border px-2 py-1"
+              />
+            </div>
+            <button className="p-1 mt-1 radius">Submit</button>
+          </div>
+      </form>
+  
+      <input type="text" placeholder="Enter Your Name" className="placeholder-my3 placeholder-opacity-20"/>
+      
+  
+      <div className="flex bg-orange-500 bg-opacity-30 shadow-1 gap-x-5" >
+        <div className="" >HI</div>
+        <div className="" >Hello</div>
+      </div>
+      
+      
+      <div className="max-w-2">
+        <div className="grid bg-primary grid-temp-cols-4 py-2">
+          <div className="flex bg-secondary align-center">
+            <h4>Logo</h4>
+            <input type="text" placeholder="Enter Person Name..."
+                   className="
+                   bg-transparent
+                   border-primary
+                   outline-none
+                   place
+                   text-primary
+                   border px-2 py-2"/>
+          </div>
+          <div className="col-start-2 col-start-5 bg-secondary">
+            <ul className="">
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+              <li className="px-1">SOCIAL</li>
+            </ul>
+          </div>
+      
+        </div>
+      </div>
+      <h1 className="hover:bg-primary md:bg-secondary hover:text-secondary">This IS TEXT</h1>
+      
+      <div className="bg-primary w-screen-sm mx-auto">
+        <button className="m-1 absolute top-2">Hi</button>
+        <button className="w-1/2">Hello</button>
+      </div>
+      
+      <div className="bg-blue-100 xl:max-w-2xl ">
+        <button>This is Button</button>
+        <button>Another Button</button>
+      </div>
+      
+      <div className="divide-primary divide-y divide-opacity-20">
+        <li>A</li>
+        <li>A</li>
+        <li>A</li>
+        <li>A</li>
+        <li>A</li>
+      </div>
+      
+      
     </div>
   )
 }
