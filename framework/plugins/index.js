@@ -41,6 +41,7 @@ const positionState = require("./positionState")
 const placeholderColor = require("./placeholderColor")
 const placeholderOpacity = require("./placeholderOpacity")
 const textAlign = require("./textAlign");
+const textDecoration = require("./textDecoration");
 const userSelect = require("./userSelect");
 const whitespace = require("./whitespace");
 const zIndex = require("./zIndex")
@@ -125,6 +126,7 @@ module.exports = {
     transform,
     translate,
     textAlign,
+    textDecoration,
     userSelect,
     whitespace,
     zIndex,

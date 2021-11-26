@@ -3,10 +3,10 @@ import ReactDom from 'react-dom'
 
 
 // import "tailwindcss/tailwind.css"
-import "../framework/dist/index.css"
+// import "../framework/dist/index.css"
 
 import App from './App'
-import './index.css'
+// import './index.css'
 
 ReactDom.render(
   <App />,

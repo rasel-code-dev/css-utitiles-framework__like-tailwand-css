@@ -8,14 +8,13 @@ import Button  from "./components/button/Button";
 const App = ()=>{
   return (
     <div className="w-max-7xl">
-      <div style={{position: "relative"}} className="font-sm -top-3.5">Hi</div>
+      <div className="font-sm relative -top-3.5">Hi</div>
       
-      <div className="radius border-primary  bg-red-600 bg-opacity-50 border-2">HHHHHHHHHH</div>
-      <h1 className="text-red-600">Hi This is H1 Tag</h1>
-      <div className="border-red-300 border border-opacity-25">HHHHHHHHHH</div>
-      <div className="radius" style={{background: "red"}}>HHHHHHHHHH</div>
+      <h1 className="font-100 hover:font-900 ">Hi This is H1 Tag</h1>
+
+      <div className="text-page text-primary hover:text-opacity-50">Hover ME</div>
   
-      <div className="grid grid-temp-cols-2  gap-x-2 gap-y-2">
+     {/* <div className="grid grid-temp-cols-2  gap-x-2 gap-y-2">
         <div className="bg-primary">A</div>
         <div className="bg-secondary">B</div>
         <div className="bg-primary">A</div>
@@ -144,7 +143,7 @@ const App = ()=>{
         <li>A</li>
         <li>A</li>
         <li>A</li>
-      </div>
+      </div>*/}
       
       
     </div>

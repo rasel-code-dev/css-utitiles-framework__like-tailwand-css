@@ -1,6 +1,6 @@
 const postcss = require("postcss");
 
-const config =  require("../../tailwind.config");
+const config =  require("../../variable.config");
 const parseColorsUtilities = require("./parseColorsUtilities")
 
 const createOpacity = require("./parseOpacity");

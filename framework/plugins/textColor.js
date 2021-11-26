@@ -23,7 +23,7 @@ module.exports =  function (forMedia) {
       {
         values: flattenColorPalette(theme('textColor')),
         type: 'color',
-        breakpoint: true
+        hover: true
       },
       forMedia
     )

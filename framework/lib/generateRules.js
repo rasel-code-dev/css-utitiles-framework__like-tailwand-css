@@ -1,4 +1,4 @@
-const config = require("../../tailwind.config");
+const config = require("../../variable.config");
 const isFloat = require("../util/isFloat");
 const postcss = require("postcss");
 const chalk = require("chalk");
@@ -151,7 +151,7 @@ function generateRules(utilities, root, forMedia){
         
       } else if(typeof config.theme[themeKey]  === "function") {
         /** config.theme return function */
-        // get value from tailwind.config.js file
+        // get value from variable.config.js file
         
         let utilityClassFn = config.theme[themeKey]
         let allWidth = utilityClassFn((value)=>{

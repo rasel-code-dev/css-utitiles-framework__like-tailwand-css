@@ -15,8 +15,9 @@ const getInfo = require("./getInfo");
 
 function matchUtilities(utilityVariations, configValue, forMedia){
   let result = ''
+  let hoverResult = ''
 
-  let { values,  type } = configValue
+  let { values, type, hover } = configValue
   
   
   let ruleName = Object.keys(utilityVariations)[0]
@@ -35,7 +36,7 @@ function matchUtilities(utilityVariations, configValue, forMedia){
         css = utilityVariations[ruleName](values[valueKey], true)
       }
       
-      let cssMap = new Map()
+      let cssMap = new Map() // here key is css ruleName and value is css string...
       
       for (const cssKey in css) {
 
@@ -76,16 +77,22 @@ function matchUtilities(utilityVariations, configValue, forMedia){
         }
       }
       
+      
+      
       // outside of loop in css properties
       cssMap.forEach((val, key)=>{
         let rule = `${key}{${val}}`
+        if(hover) {
+          let hoverRule = `.hover\\:${key.slice(1)}:hover{${val}}`
+          hoverResult += hoverRule
+        }
         result += rule
         forMedia && forMedia(rule)
       })
-
-      
+    }
+    
     // type any without color
-    } else {
+    else {
       
       /* handle for margin padding borderWidth placeholder-opacity */
       for (let utilityVariationsKey in utilityVariations) {
@@ -93,8 +100,8 @@ function matchUtilities(utilityVariations, configValue, forMedia){
           'mx': ['margin-left', 'margin-right'],
           'my': ['margin-top', 'margin-bottom'],
         */
+
         if (typeof utilityVariations[utilityVariationsKey] === "object") {
-        
           let info = getInfo(valueKey)
           if(info.isDot){
             let splitter = getScapeSign(".")
@@ -131,19 +138,21 @@ function matchUtilities(utilityVariations, configValue, forMedia){
               // forMedia && forMedia(rule)
               result += rule
             }
-          } else if(info.isSlash){
+          }
+          else if(info.isSlash){
             let splitter = getScapeSign("/")
-
-          } else {
-
+          }
+          else {
+            
             let CSSString = ''
             let pairCSSObj = utilityVariations[utilityVariationsKey]
-
+            
             for (const pairCSSItem of pairCSSObj) {
               CSSString += `${pairCSSItem}: ${values[valueKey]};`
             }
+            
             if(info.isNegative) {
-              let rule = createSimpleRuleName(
+              let { rule, hoverRule }  = createSimpleRuleName(
                 utilityVariations,
                 utilityVariationsKey,
                 values,
@@ -153,7 +162,7 @@ function matchUtilities(utilityVariations, configValue, forMedia){
               )
               result += rule
             } else {
-              let rule = createSimpleRuleName(
+              let { rule, hoverRule } = createSimpleRuleName(
                 utilityVariations,
                 utilityVariationsKey,
                 values,
@@ -166,7 +175,8 @@ function matchUtilities(utilityVariations, configValue, forMedia){
           }
 
         // matchUtilities.utilityVariations Object Key are return a function like [space]
-        } else if(typeof utilityVariations[utilityVariationsKey] === "function") {
+        }
+        else if(typeof utilityVariations[utilityVariationsKey] === "function") {
           
           /// complex pseudo class like placeholder-opacity
           let utilityVariationObj = utilityVariations[utilityVariationsKey](values[valueKey])
@@ -230,7 +240,7 @@ function matchUtilities(utilityVariations, configValue, forMedia){
 
               } else {
                 if(info.isNegative) {
-                  let r = createSimpleRuleName(
+                  let { rule, hoverRule }  = createSimpleRuleName(
                     utilityVariations,
                     utilityVariationsKey,
                     values,
@@ -239,9 +249,9 @@ function matchUtilities(utilityVariations, configValue, forMedia){
                     cssObjString
                   )
   
-                  result += r
+                  result += rule
                 } else {
-                  let r = createSimpleRuleName(
+                  let { rule, hoverRule }  = createSimpleRuleName(
                     utilityVariations,
                     utilityVariationsKey,
                     values,
@@ -250,7 +260,7 @@ function matchUtilities(utilityVariations, configValue, forMedia){
                     cssObjString
                   )
   
-                  result += r
+                  result += rule
                 }
               }
 
@@ -261,10 +271,11 @@ function matchUtilities(utilityVariations, configValue, forMedia){
             }
           }
 
-        } else if(typeof utilityVariations[utilityVariationsKey] === "string" || typeof utilityVariations[utilityVariationsKey] === "number"){
-          // like width margin borderWidth
-          let info = getInfo(valueKey)
+        }
+        else if(typeof utilityVariations[utilityVariationsKey] === "string" || typeof utilityVariations[utilityVariationsKey] === "number"){
+          // like width  margin marginTop borderWidth textOpacity
           
+          let info = getInfo(valueKey)
           if (info.isDot){
             let splitter = getScapeSign(".")
             if(info.isNegative){
@@ -296,7 +307,8 @@ function matchUtilities(utilityVariations, configValue, forMedia){
               forMedia && forMedia(r)
               result += r
             }
-          } else if(info.isSlash) {
+          }
+          else if(info.isSlash) {
             let splitter = getScapeSign("/")
             if(info.isNegative){
               // let rule = createSimpleRuleName(
@@ -324,10 +336,12 @@ function matchUtilities(utilityVariations, configValue, forMedia){
               result += rule
             }
 
-          } else {
-            // handle plugin like maxWidth
+          }
+          else {
+            
+            // handle plugin like maxWidth textOpacity
             if(info.isNegative) {
-              let rule = createSimpleRuleName(
+              let { rule, hoverRule }  = createSimpleRuleName(
                 utilityVariations,
                 utilityVariationsKey,
                 values,
@@ -338,22 +352,27 @@ function matchUtilities(utilityVariations, configValue, forMedia){
               result += rule
             } else {
               
-              let rule = createSimpleRuleName(
+              let { rule, hoverRule } = createSimpleRuleName(
                 utilityVariations,
                 utilityVariationsKey,
                 values,
                 valueKey,
-                false
+                false,
+                "",
+                true
               )
+             
               forMedia && forMedia(rule)
               result += rule
+              hoverResult += hoverRule
             }
           }
         }
       }
     }
   }
-  return result
+  
+  return JSON.stringify({ result: result, hoverResult: hoverResult })
 }
 
 module.exports  = matchUtilities
@@ -369,17 +388,29 @@ function trimPxDefault(val, isNegative){
   }
 }
 
-function createSimpleRuleName(utilityVariations, utilityVariationsKey, values, valueKey, isNegative, CSSString){
+function createSimpleRuleName(utilityVariations, utilityVariationsKey, values, valueKey, isNegative, CSSString, isHoverAble){
+  let rule = ''
+  let hoverRule = ''
+  
   let css = `${utilityVariations[utilityVariationsKey]}: ${values[valueKey]}`
-  return `.${isNegative ? "-" : ''}${utilityVariationsKey}${trimPxDefault(valueKey, isNegative)}{
+  if(isHoverAble){
+    hoverRule =  `.hover\\:${isNegative ? "-" : ''}${utilityVariationsKey}${trimPxDefault(valueKey, isNegative)}:hover{
+        ${CSSString ? CSSString : css}
+    } `
+  }
+  
+  rule = `.${isNegative ? "-" : ''}${utilityVariationsKey}${trimPxDefault(valueKey, isNegative)}{
       ${CSSString ? CSSString : css}
   } `
+  
+  return { rule, hoverRule }
 }
 
 
 function createDoubleRuleName(utilityVariations, utilityVariationsKey, values, valueKey, valueKeySplit, isNegative, splitter, CSSString){
   let css = `${utilityVariations[utilityVariationsKey]}: ${values[valueKey]}`
   const isEmpty = valueKey === ""
+
   return `.${isNegative ? "-" : ''}${utilityVariationsKey}${isNegative ? '' : isEmpty ? "" : '-'}${valueKeySplit[0]}${splitter}${valueKeySplit[1]}{
     ${CSSString ? CSSString : css}
   }`

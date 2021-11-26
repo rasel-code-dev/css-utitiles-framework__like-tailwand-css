@@ -2,7 +2,7 @@
 
 const hexToRGB = require("./hexToRGB");
 
-const config = require("../../tailwind.config")
+const config = require("../../variable.config")
 
 
 module.exports =  function ({themeKey, prefixCls, cssPropName, variable, mediaQueries, hover}, forMedia){

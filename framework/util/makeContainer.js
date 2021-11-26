@@ -1,4 +1,4 @@
-const config  = require("../../tailwind.config");
+const config  = require("../../variable.config");
 
 
 

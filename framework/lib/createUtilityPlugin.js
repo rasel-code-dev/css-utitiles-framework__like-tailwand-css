@@ -12,7 +12,7 @@ function prefixNegativeModifiers(base, modifier) {
   }
 }
 
-const config = require("../../tailwind.config")
+const config = require("../../variable.config")
 
 
 function asClass(name) {
@@ -60,9 +60,19 @@ function createUtilityPlugin(themeKey, utilityVariations, options){
         return getThemeObj(key)
       }
     })
-    result += matchUtilities(utilityVariations, { values: parseUnit(values), type: "any" }, options.forMedia)
+      
+      result += matchUtilities(
+        utilityVariations,
+        { values: parseUnit(values), type: "any", hover: options.hover },
+        options.forMedia
+      )
     } else {
-    result += matchUtilities(utilityVariations, { values: parseUnit(f), type: "any" }, options.forMedia)
+
+      result += matchUtilities(
+        utilityVariations,
+        { values: parseUnit(f), type: "any", hover: options.hover },
+        options.forMedia
+      )
   }
   
   return result

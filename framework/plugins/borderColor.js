@@ -25,7 +25,7 @@ module.exports =  function (forMedia) {
         values: flattenColorPalette(theme('borderColor')),
         //   variants: variants('backgroundColor'),
         type: 'color',
-        breakpoint: true
+        hover: true
       },
       forMedia
     )

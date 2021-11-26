@@ -27,6 +27,14 @@ textarea::placeholder {
   //color: #a1a1aa;
 }
 
+.reset{
+  background: red;
+}
+.list{
+  @apply reset
+}
+
+
 //.transform{
 //  --tw-translate-y: 0;
 //  --tw-rotate: 0;

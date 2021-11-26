@@ -10,7 +10,7 @@ function negative(item={}){
 module.exports = {
   theme: {
     screens: {
-      sm: '640px',
+      sm: '576px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
@@ -23,6 +23,7 @@ module.exports = {
       my: "#353",
       my2: "#353",
       primary: '#877EFF',
+      danger: '#ff934f',
       secondary: '#ef7859',
       "transparent": "#ffffff00", // transparent
       primary_light: '#d3d1ff7a',
@@ -293,6 +294,7 @@ module.exports = {
     },
     borderWidth: {
       DEFAULT: '1px',
+      1: '1px',
       0: '0px',
       2: '2px',
       3: '3px',

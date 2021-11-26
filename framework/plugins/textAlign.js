@@ -9,8 +9,10 @@ module.exports = function (forMedia){
       '.text-right': 'right' ,
       '.text-justify': 'justify',
     },
+    
     "text-align",
-    forMedia
+    forMedia,
+    true
   )
 }
 

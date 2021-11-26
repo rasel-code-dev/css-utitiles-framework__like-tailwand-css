@@ -1,10 +1,10 @@
 
 
-const expandApplyAtRules = require("./framework/lib/expandApplyAtRules");
+const applyCss = require("./framework/lib/expandApplyAtRules");
 
 module.exports = {
   plugins: [
-    (root)=> expandApplyAtRules(root)
+    applyCss()
     // require("tailwindcss"),
     // require("autoprefixer"),
   ],

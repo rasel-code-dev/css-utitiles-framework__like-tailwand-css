@@ -1,6 +1,6 @@
 const postcss = require("postcss");
 const display = require("../plugins/display");
-const config = require("../../tailwind.config")
+const config = require("../../variable.config")
 const alignItems = require("../plugins/alignItems");
 
 

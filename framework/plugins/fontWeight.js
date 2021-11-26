@@ -11,7 +11,7 @@ module.exports =  function (forMedia) {
       },
       {
         forMedia,
-        isHover: true
+        hover: true
       }
     )
   }

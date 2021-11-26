@@ -16,7 +16,7 @@
 const flattenColorPalette = require("../lib/flattenColorPalette")
 const getThemeObj = require("../lib/getThemeObj")
 
-const config = require("../../tailwind.config");
+const config = require("../../variable.config");
 const hexToRGB = require("../util/hexToRGB");
 const matchUtilities = require("../lib/matchUtilities");
 const withAlphaVariable = require("../lib/withAlphaVariable");

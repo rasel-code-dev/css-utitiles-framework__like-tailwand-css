@@ -7,7 +7,7 @@ const makeTransformRule = require("../util/makeTransformRule");
 
 
 const utilities = require("../plugins")
-const config =  require("../../tailwind.config");
+const config =  require("../../variable.config");
 const postcss = require("postcss");
 const makeTranslateRule = require("../util/makeTranslateRule");
 
@@ -85,23 +85,30 @@ function generateRulesAll(root, forMedia) {
   
   for (const item of items) {
     let c = item(forMedia)
+    
     if(typeof c === "function"){
-  
-      result += c(theme)
+      let obj = c(theme)
+      if(obj){
+        let r = JSON.parse(obj)
+        if(r.result){
+          result+=r.result
+        }
+        if(r.hoverResult){
+          result+=r.hoverResult
+        }
+      }
     } else {
-      result += c
+      if(c){
+        let r = JSON.parse(c)
+        if(r.result){
+          result+=r.result
+        }
+        if(r.hoverResult){
+          result+=r.hoverResult
+        }
+      }
     }
-  
-    // result += item()(theme)
-    // result += utilities.backgroundColor()(theme)
   }
-  
-  // utilities.justifyItems,
-  // utilities.justifyContent,
-  // utilities.alignItems,
-  // utilities.display,
-  // utilities.fontWeight,
-  // utilities.width,
 
   let withOpacity = ["color", "background-color", "border-color", "p"]
   

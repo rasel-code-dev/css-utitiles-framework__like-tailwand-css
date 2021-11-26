@@ -33,7 +33,7 @@
 
 const flattenColorPalette = require("../lib/flattenColorPalette")
 
-const config = require("../../tailwind.config");
+const config = require("../../variable.config");
 const hexToRGB = require("../util/hexToRGB");
 const matchUtilities = require("../lib/matchUtilities");
 const withAlphaVariable = require("../lib/withAlphaVariable");
@@ -59,7 +59,8 @@ module.exports =  function (forMedia) {
       {
         values: flattenColorPalette(theme('backgroundColor')),
         //   variants: variants('backgroundColor'),
-        type: 'color'
+        type: 'color',
+        hover: true
       },
       forMedia
     )
