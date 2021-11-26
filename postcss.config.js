@@ -1,11 +1,10 @@
 
+const apply = require("postcss-class-apply/dist/index")
 
-const applyCss = require("./framework/lib/expandApplyAtRules");
 
 module.exports = {
   plugins: [
-    applyCss()
-    // require("tailwindcss"),
-    // require("autoprefixer"),
+    apply()
   ],
 };
+

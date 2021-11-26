@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/my-tailwand-auto-completion.iml" filepath="$PROJECT_DIR$/.idea/my-tailwand-auto-completion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/css-utilities.iml" filepath="$PROJECT_DIR$/.idea/css-utilities.iml" />
     </modules>
   </component>
 </project>

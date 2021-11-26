@@ -1,41 +1,52 @@
 {
-  "name": "node-sql",
+  "name": "utilitycss",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "./src/index.js",
   "scripts": {
-    "dev": "vite && yarn run utility-watch",
-    "build": "vite build",
-    "serve": "vite preview",
-    "utility2": "nodemon -w lib, util, plugins, index.js framework/index.js",
-    "utility": "nodemon framework/index.js",
-    "start": "npm-run-all --parallel dev utility"
+    "dev": "nodemon src/index.js",
+    "build": "node src/index.js"
+  },
+  "keywords": [
+    "css",
+    "utility css",
+    "tailwind css like",
+    "postcss"
+  ],
+  "author": {
+    "name": "Rasel mahmud",
+    "url": "https://github.com/rasel-code-dev"
+  },
+  "homepage": "https://github.com/rasel-code-dev/utilitycss.git",
+  "bugs": "https://github.com/rasel-code-dev/utilitycss.git/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rasel-code-dev/utilitycss.git"
+  },
+  "license": "Unlicense",
+  "files": [
+    "dist",
+    "src",
+    "CHANGELOG.md",
+    "index.js",
+    "tests",
+    "README.md",
+    "UNLICENSE"
+  ],
+  "bin": {
+    "utilitycss": "./bin/index.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "chalk": "^4.1.2",
-    "classnames": "^2.3.1",
-    "npm-run-all": "^4.1.5",
-    "query-string": "^7.0.1",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-slick": "^0.28.1",
-    "react-topbar-progress-indicator": "^4.1.0",
-    "react-transition-group": "^4.4.2",
-    "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0",
-    "sass": "^1.42.1",
-    "slick-carousel": "^1.8.1"
+    "postcss-class-apply": "^3.5.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
-    "@vitejs/plugin-react-refresh": "^1.3.1",
     "autoprefixer": "^10.3.7",
+    "chalk": "^4.1.2",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.9",
     "postcss-cli": "^9.0.2",
-    "postcss-prettify": "^0.3.4",
-    "vite": "^2.3.8"
+    "postcss-prettify": "^0.3.4"
   }
 }
